@@ -3,7 +3,7 @@ import pygame
 pygame.init()
 
 FPS = 30
-screen = pygame.display.set_mode((1200, 1200))
+screen = pygame.display.set_mode((400, 400))
 
 white = ((255,255,255))
 red = ((255,0,0))
