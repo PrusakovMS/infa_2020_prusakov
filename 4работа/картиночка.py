@@ -28,6 +28,10 @@ otstup_okna = 41
 
 
 def house(x, y):
+    '''
+    Функция house добавляет дом:
+    x, y - координаты левого нижнего угла дома
+    '''
     # строение
     pygame.draw.rect(screen, brown, [x, y - 244, 171, 244])
     # окна
@@ -67,6 +71,18 @@ pygame.draw.ellipse(surface, (52, 52, 52, 100), (0, 500, 300, 80))
 
 
 # призраки
+'''
+Функции ghostr и ghostl добавляет призраков, повернутых лицом направо
+и налево соответственно:
+x, y - координаты центра "лица" призрака
+r - радиус 
+Функции ghostr и ghostl добавляет призраков, повернутых лицом направо
+и налево соответственно:
+x, y - координаты центра "лица" призрака
+r - радиус "лица" призрака
+i, j, k - цвет призрака
+p - мера его прозрачности
+'''
 def ghostl(x, y, r, i, j, k, p):
     pygame.draw.circle(surface, (i, j, k, p), (x, y), r)
     pygame.draw.rect(surface, (i, j, k, p), (x-r, y, 2*r, 1.3*r))
@@ -74,10 +90,10 @@ def ghostl(x, y, r, i, j, k, p):
                                                       (x-r+2*0.33*r, y+1.6*r), (x-r+3*0.33*r, y+1.4*r),
                                                       (x-r+4*0.33*r, y+1.6*r), (x-r+5*0.33*r, y+1.4*r),
                                                       (x+r, y+1.6*r), (x+r, y+1.3*r)])
-    pygame.draw.circle(surface, (225, 225, 225, p), [x-int(0.5*r), y-int(0.5*r)], int(0.3*r))
-    pygame.draw.circle(surface, (0, 0, 0, p), [x - int(0.5 * r), y - int(0.5 * r)], int(0.1 * r))
-    pygame.draw.circle(surface, (225, 225, 225, p), [x + int(0.25*r), y - int(0.25 * r)], int(0.3 * r))
-    pygame.draw.circle(surface, (0, 0, 0, p), [x + int(0.25 * r), y - int(0.25 * r)], int(0.1 * r))
+    pygame.draw.circle(surface, (225, 225, 225, 225), [x-int(0.5*r), y-int(0.5*r)], int(0.3*r))
+    pygame.draw.circle(surface, (0, 0, 0/ 225), [x - int(0.5 * r), y - int(0.5 * r)], int(0.1 * r))
+    pygame.draw.circle(surface, (225, 225, 225, 225), [x + int(0.25*r), y - int(0.25 * r)], int(0.3 * r))
+    pygame.draw.circle(surface, (0, 0, 0, 225), [x + int(0.25 * r), y - int(0.25 * r)], int(0.1 * r))
 
 
 def ghostr(x, y, r, i, j, k, p):
@@ -88,10 +104,61 @@ def ghostr(x, y, r, i, j, k, p):
                              (x - r + 2 * 0.33 * r, y + 1.6 * r), (x - r + 3 * 0.33 * r, y + 1.4 * r),
                              (x - r + 4 * 0.33 * r, y + 1.6 * r), (x - r + 5 * 0.33 * r, y + 1.4 * r),
                              (x + r, y + 1.6 * r), (x + r, y + 1.3 * r)])
-    pygame.draw.circle(surface, (225, 225, 225, p), [x - int(0.25 * r), y - int(0.25 * r)], int(0.3 * r))
-    pygame.draw.circle(surface, (0, 0, 0, p), [x - int(0.25 * r), y - int(0.25 * r)], int(0.1 * r))
-    pygame.draw.circle(surface, (225, 225, 225, p), [x + int(0.5 * r), y - int(0.5 * r)], int(0.3 * r))
-    pygame.draw.circle(surface, (0, 0, 0, p), [x + int(0.5 * r), y - int(0.5 * r)], int(0.1 * r))
+    pygame.draw.circle(surface, (225, 225, 225, 225), [x - int(0.25 * r), y - int(0.25 * r)], int(0.3 * r))
+    pygame.draw.circle(surface, (0, 0, 0, 225), [x - int(0.25 * r), y - int(0.25 * r)], int(0.1 * r))
+    pygame.draw.circle(surface, (225, 225, 225, 225), [x + int(0.5 * r), y - int(0.5 * r)], int(0.3 * r))
+    pygame.draw.circle(surface, (0, 0, 0, 225), [x + int(0.5 * r), y - int(0.5 * r)], int(0.1 * r))
+
+# рисуем наконец
+house(220, 594)
+house(15, 688)
+house(467, 469)
+# red = ((255,0,0))
+# orange = ((255,100,10))
+# blue = ((0,0,255))
+# pink = ((255,100,180))
+ghostl(508, 699, 50, 255, 0, 0,  250)
+ghostr(134, 746, 30, 255, 100, 180,  120)
+ghostr(107, 791, 30, 0, 0, 255,  100)
+ghostl(519, 543, 40, 255, 100, 10, 150)
+screen.blit(surface, (0, 0))
+pygame.display.update()
+clock = pygame.time.Clock()
+finished = False
+
+while not finished:
+    clock.tick(FPS)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            finished = True
+
+pygame.quit()
+
+def ghostl(x, y, r, i, j, k, p):
+    pygame.draw.circle(surface, (i, j, k, p), (x, y), r)
+    pygame.draw.rect(surface, (i, j, k, p), (x-r, y, 2*r, 1.3*r))
+    pygame.draw.polygon(surface, (i, j, k, p), [(x-r, y+1.3*r), (x-r, y+1.6*r), (x-r+0.33*r, y+1.4*r),
+                                                      (x-r+2*0.33*r, y+1.6*r), (x-r+3*0.33*r, y+1.4*r),
+                                                      (x-r+4*0.33*r, y+1.6*r), (x-r+5*0.33*r, y+1.4*r),
+                                                      (x+r, y+1.6*r), (x+r, y+1.3*r)])
+    pygame.draw.circle(screen, (225, 225, 225), [x-int(0.5*r), y-int(0.5*r)], int(0.3*r))
+    pygame.draw.circle(screen, (0, 0, 0), [x - int(0.5 * r), y - int(0.5 * r)], int(0.1 * r))
+    pygame.draw.circle(screen, (225, 225, 225), [x + int(0.25*r), y - int(0.25 * r)], int(0.3 * r))
+    pygame.draw.circle(screen, (0, 0, 0), [x + int(0.25 * r), y - int(0.25 * r)], int(0.1 * r))
+
+
+def ghostr(x, y, r, i, j, k, p):
+    pygame.draw.circle(surface, (i, j, k, p), (x, y), r)
+    pygame.draw.rect(surface, (i, j, k, p), (x - r, y, 2 * r, 1.3 * r))
+    pygame.draw.polygon(surface, (i, j, k, p),
+                            [(x - r, y + 1.3 * r), (x - r, y + 1.6 * r), (x - r + 0.33 * r, y + 1.4 * r),
+                             (x - r + 2 * 0.33 * r, y + 1.6 * r), (x - r + 3 * 0.33 * r, y + 1.4 * r),
+                             (x - r + 4 * 0.33 * r, y + 1.6 * r), (x - r + 5 * 0.33 * r, y + 1.4 * r),
+                             (x + r, y + 1.6 * r), (x + r, y + 1.3 * r)])
+    pygame.draw.circle(screen, (225, 225, 225), [x - int(0.25 * r), y - int(0.25 * r)], int(0.3 * r))
+    pygame.draw.circle(screen, (0, 0, 0), [x - int(0.25 * r), y - int(0.25 * r)], int(0.1 * r))
+    pygame.draw.circle(screen, (225, 225, 225), [x + int(0.5 * r), y - int(0.5 * r)], int(0.3 * r))
+    pygame.draw.circle(screen, (0, 0, 0), [x + int(0.5 * r), y - int(0.5 * r)], int(0.1 * r))
 
 # рисуем наконец
 house(220, 594)
