@@ -21,6 +21,7 @@ pygame.draw.rect(screen, black, [80, 300, 225, 50])
 pygame.draw.polygon(screen, black, [[150, 120], [160, 110], [30, 20], [20, 30]])
 pygame.draw.polygon(screen, black, [[240, 130], [230,120], [380, 30], [390, 40]])
 
+#wasd
 
 
 
