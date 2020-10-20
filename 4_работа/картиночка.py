@@ -84,8 +84,10 @@ r - радиус "лица" призрака
 i, j, k - цвет призрака
 p - мера его прозрачности
 '''
-
-def ghostl(x, y, r, i, j, k, p):
+def ghostl(i, j, k, p):
+    x = randint(100, 500)
+    y = randint(100, 800)
+    r = randint(30, 50)
     pygame.draw.circle(surface, (i, j, k, p), (x, y), r)
     pygame.draw.rect(surface, (i, j, k, p), (x - r, y, 2 * r, 1.3 * r))
     pygame.draw.polygon(surface, (i, j, k, p),
@@ -99,7 +101,10 @@ def ghostl(x, y, r, i, j, k, p):
     pygame.draw.circle(surface, (0, 0, 0, 225), [x + int(0.25 * r), y - int(0.25 * r)], int(0.1 * r))
 
 
-def ghostr(x, y, r, i, j, k, p):
+def ghostr(i, j, k, p):
+    x = randint(100, 500)
+    y = randint(100, 800)
+    r = randint(30, 50)
     pygame.draw.circle(surface, (i, j, k, p), (x, y), r)
     pygame.draw.rect(surface, (i, j, k, p), (x - r, y, 2 * r, 1.3 * r))
     pygame.draw.polygon(surface, (i, j, k, p),
@@ -121,10 +126,10 @@ house(467, 469)
 # orange = ((255,100,10))
 # blue = ((0,0,255))
 # pink = ((255,100,180))
-ghostl(508, 699, 50, 255, 0, 0, 250)
-ghostr(134, 746, 30, 255, 100, 180, 120)
-ghostr(107, 791, 30, 0, 0, 255, 100)
-ghostl(519, 543, 40, 255, 100, 10, 150)
+ghostl(255, 0, 0, 250)
+ghostr(255, 100, 180, 120)
+ghostr(0, 0, 255, 100)
+ghostl(255, 100, 10, 150)
 screen.blit(surface, (0, 0))
 pygame.display.update()
 clock = pygame.time.Clock()
