@@ -19,9 +19,12 @@ Colour_star = [Pink, Violet, Green, Red]
 
 
 def tree(bottom_x, bottom_y, height: int):
-    # bottom_x, bottom_y - coordinates of the centre of tree's bottom
-    # height - height of the tree
-    # tree trunk
+    '''
+    This function draws the trees on the picture:
+    bottom_x, bottom_y - coordinates of the centre of tree's bottom
+    height - height of the tree
+    '''
+    #tree trunk
     rect(screen, (128, 80, 53), (bottom_x - int(0.1 * height), bottom_y - height // 2, int(0.2 * height), height // 2))
     rect(screen, (66, 33, 0), (bottom_x - int(0.1 * height), bottom_y - height // 2, int(0.2 * height), height // 2))
     # tree leaves:
@@ -49,8 +52,11 @@ def tree(bottom_x, bottom_y, height: int):
 
 
 def house(Coordin_x, Coordin_y, height, colour_wall, colour_roof, colour_window):
-    # Coordin_x,Coordin_y - coordinates of the lower-left corner
-    # height - height of the house
+    '''
+    This function draws the houses on the picture:
+    Coordin_x,Coordin_y - coordinates of the lower-left corner
+    height - height of the house
+    '''
     # walls
     rect(screen, colour_wall, (Coordin_x, Coordin_y - height // 2, height, height // 2))
     rect(screen, (0, 0, 0), (Coordin_x, Coordin_y - height // 2, height, height // 2), 1)
@@ -80,8 +86,11 @@ def house(Coordin_x, Coordin_y, height, colour_wall, colour_roof, colour_window)
 
 
 def cloud(Coordin_x, Coordin_y, length):
-    # Coordin_x,Coordin_y - coordinates of the lower-left corner
-    # lehgth - length of the cloud
+    '''
+    This function draws the clouds on the picture:
+    Coordin_x,Coordin_y - coordinates of the lower-left corner
+    lehgth - length of the cloud
+    '''
     for i in range(1, 5):
         circle(screen, (193, 252, 253), (Coordin_x + i * length // 4, Coordin_y - length // 4), length // 4)
         circle(screen, (6, 181, 185), (Coordin_x + i * length // 4, Coordin_y - length // 4), length // 4, 1)
@@ -91,8 +100,11 @@ def cloud(Coordin_x, Coordin_y, length):
 
 
 def sun(Coordin_x, Coordin_y, size_out, colour):
-    # Coordin_x, Coordin_y - coordinates of the centre
-    # size_out - the radius of the outer points
+    '''
+    This function draws the sun on the picture:
+    Coordin_x, Coordin_y - coordinates of the centre
+    size_out - the radius of the outer points
+    '''
     Coordinates = []  # the coordinates of the vertexes
     size_in = 0.6 * size_out  # the radius of the inner points
     mark = True
@@ -109,7 +121,9 @@ def sun(Coordin_x, Coordin_y, size_out, colour):
 
 
 def picture():
-    # This function draws the picture without stars
+    '''
+    This function draws the picture without stars
+    '''
     # big yellow sun
     sun(77, 62, 35, (255, 242, 0))
     # clouds
